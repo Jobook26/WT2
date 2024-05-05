@@ -69,7 +69,7 @@ function calculateCost() {
 // --------------------------------------------------
 // Kontrollera om familjerum är valt och ändra tillgänglighet till andra val
 function checkIfFamilyRoom() {
-	formElem.persons.disabled = !formElem.roomType[2].checked
+	formElem.persons.disabled = !formElem.roomType[2].checked;
 } // Slut checkIfFamilyRoom
 // --------------------------------------------------
 // Kontrollera innehållet i de fält som namnges i fieldNames

@@ -19,7 +19,7 @@ function init() {
     msgElem = document.querySelector("#message");
     
 
-    startBtn.addEventListener("click", startGame)
+    startBtn.addEventListener("click", startGame);
 
     letterButtons.forEach((letter) => {
         letter.addEventListener("click", guessLetter);
@@ -44,13 +44,12 @@ function startGame() {
 // --------------------------------------------------
 // Ett ord väljs slumpmässigt. Visa en ruta för varje bokstav i ordet
 function selectRandomWord() {
-    var word = ""
+    var word = "";
     while (word == "" || word == randomWord) {
-        word = wordList[Math.floor(Math.random() * wordList.length)]
+        word = wordList[Math.floor(Math.random() * wordList.length)];
     }
     randomWord = word;
 
-    console.log(randomWord)
     
     var text = ""
     //boxElems.append(letter)
@@ -67,14 +66,12 @@ function selectRandomWord() {
     
 
     letterBoxes = letterCon.querySelectorAll("span");
-    console.log(letterBoxes)
 } // selectRandomWord
 // --------------------------------------------------
 // Kontrollera om bokstaven finns i ordet och skriv i så fall ut den.
 // Om bokstaven ej finns, uppdateras bilden med galgen och gubben
 // Om alla bokstäver är gissade eller om den sista bilden visades, avslutas spelet
 function guessLetter(data) {
-    console.log(data)
     data.target.disabled = true;
 
     var correct = false;
@@ -94,13 +91,11 @@ function guessLetter(data) {
             }
         });
         if (win) {
-            console.log("win")
             endGame(false);
         }
     } else {
         var current = parseInt(hangmanImg.src.split("/").pop().replace(/\D/g, "")) + 1;
         if (current >= 6) {
-            console.log("lose")
             
             endGame(true);
         } 
@@ -116,10 +111,9 @@ function guessLetter(data) {
 // Avsluta spelet genom att skriva ut ett meddelande och
 // sedan aktivera startknappen och inaktivera bokstavsknapparna
 function endGame(manHanged) { // manHanged är true eller false
-    console.log(parseInt((new Date().getTime() - startTime) / 1000))
     startBtn.disabled = false;
     letterButtons.forEach((letter) => letter.disabled = true);
-    var message = document.querySelector("#message")
+    var message = document.querySelector("#message");
     if (manHanged) {
         message.innerText = "Tyvär, gubben hängdes. Rätt svar är " + randomWord + "\nDet tog " + ((new Date().getTime() - startTime) / 1000).toFixed(1) + " sekunder.";
     } else {

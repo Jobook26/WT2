@@ -25,11 +25,11 @@ function init() {
 
     stopBtn.disabled = true;
 
-    document.getElementById("die1").addEventListener("click", throwOneDie)
-    document.getElementById("die2").addEventListener("click", throwOneDie)
-    document.getElementById("die3").addEventListener("click", throwOneDie)
-    document.getElementById("die4").addEventListener("click", throwOneDie)
-    document.getElementById("die5").addEventListener("click", throwOneDie)
+    document.getElementById("die1").addEventListener("click", throwOneDie);
+    document.getElementById("die2").addEventListener("click", throwOneDie);
+    document.getElementById("die3").addEventListener("click", throwOneDie);
+    document.getElementById("die4").addEventListener("click", throwOneDie);
+    document.getElementById("die5").addEventListener("click", throwOneDie);
 
 } // Slut init
 window.addEventListener("load", init);
@@ -57,13 +57,13 @@ function newGame() {//startar ett nytt spel
 function endGame() {//avslutar spelet
     stopBtn.disabled = true;
     nrOfRolls = 0;
-    rollElem.innerText = nrOfRolls
-    var text = playerName + ", summan blev " + sum + ", så du fick "
+    rollElem.innerText = nrOfRolls;
+    var text = playerName + ", summan blev " + sum + ", så du fick ";
     sum -= 18;
     if (sum < 0 || sum > 3) {
-        text += "0 poäng"
+        text += "0 poäng";
     } else {
-        text += sum + " poäng"
+        text += sum + " poäng";
     }
     resElem.innerText = text;
 }
@@ -72,7 +72,7 @@ function throwOneDie(die) {//kastar tärnmingen som trycktes på
     if (nrOfRolls > 0) {
         throwDie(die.target)
         nrOfRolls -= 1;
-        rollElem.innerText = nrOfRolls
+        rollElem.innerText = nrOfRolls;
         if (nrOfRolls == 0) {
             endGame();
         }
@@ -83,8 +83,8 @@ function throwOneDie(die) {//kastar tärnmingen som trycktes på
 
 function throwDie(die) {//logik för att karsta tärningar
     var res = Math.floor(Math.random() * 6) + 1;
-    die.src = "img/dice/" + res + ".png"
-    die.value = res
+    die.src = "img/dice/" + res + ".png";
+    die.value = res;
     score();
 }
 
