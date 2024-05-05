@@ -35,17 +35,17 @@ function init() {
 window.addEventListener("load", init);
 // --------------------------------------------------
 
-function showOptionsDialog() {
+function showOptionsDialog() {//öppna dialogen
     optionsDialog.open = true;
 }
 
-function closeOptionsDialog() {
+function closeOptionsDialog() {//sparar och stänger dialågen
     playerName = document.getElementById("player").value;
     maxNrOfRolls = document.getElementById("nrOfReroll").value;
     optionsDialog.open = false;
 }
 
-function newGame() {
+function newGame() {//startar ett nytt spel
     for (let i = 1; i <= 5; i++) {
         throwDie(document.getElementById("die" + i));
     }
@@ -54,7 +54,7 @@ function newGame() {
     stopBtn.disabled = false;
 }
 
-function endGame() {
+function endGame() {//avslutar spelet
     stopBtn.disabled = true;
     nrOfRolls = 0;
     rollElem.innerText = nrOfRolls
@@ -68,7 +68,7 @@ function endGame() {
     resElem.innerText = text;
 }
 
-function throwOneDie(die) {
+function throwOneDie(die) {//kastar tärnmingen som trycktes på
     if (nrOfRolls > 0) {
         throwDie(die.target)
         nrOfRolls -= 1;
@@ -81,14 +81,14 @@ function throwOneDie(die) {
 
 }
 
-function throwDie(die) {
+function throwDie(die) {//logik för att karsta tärningar
     var res = Math.floor(Math.random() * 6) + 1;
     die.src = "img/dice/" + res + ".png"
     die.value = res
     score();
 }
 
-function score() {
+function score() {//räknar ut poäng
     sum = 0;
     for (let i = 1; i <= 5; i++) {
         sum += parseInt(document.getElementById("die" + i).src.split("/").pop().replace(/\D/g, ""));

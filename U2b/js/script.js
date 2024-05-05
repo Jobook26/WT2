@@ -176,7 +176,7 @@ function moveCar() {
 
 /* ===== Tillägg av nya funktioner i uppgiften ===== */
 
-function newPig() {
+function newPig() {//plaserar ut en ny gris
     if (pigCounter < 10) {
         
         
@@ -202,7 +202,7 @@ function newPig() {
     
 }
 
-function checkHit() {
+function checkHit() {//kollar om bilen och grisen har krokat
     if (catchedPig) {
         return;
     }
