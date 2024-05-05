@@ -101,7 +101,11 @@ function startGame() {
     /* === Tillägg i uppgiften === */
     pigCounter = 0;
     hitCounter = 0;
+    pigCounterElem.innerText = pigCounter;
+    hitCounterElem.innerText = hitCounter;
     pigTimer = setTimeout(() => newPig(), pigDuration);
+
+    catchedPig = true;
     
 } // Slut startGame
 // --------------------------------------------------
@@ -165,7 +169,7 @@ function moveCar() {
     carTimer = setTimeout(moveCar, carInterval);
 
     /* === Tillägg i uppgiften === */
-    
+    checkHit();
     
 } // Slut moveCar
 // --------------------------------------------------
@@ -174,12 +178,17 @@ function moveCar() {
 
 function newPig() {
     if (pigCounter < 10) {
+        
+        
 
         pigElem.style.left = (Math.floor(Math.random() * (boardElem.offsetWidth - pigElem.offsetWidth - 40)) + 20) + "px";
 
         pigElem.style.top = (Math.floor(Math.random() * (boardElem.offsetHeight - pigElem.offsetHeight - 40)) + 20) + "px";
 
+        pigElem.src = "img/pig.png";
         pigElem.style.visibility = "visible";
+
+        catchedPig = false;
 
         pigCounter += 1;
         pigCounterElem.innerText = pigCounter;
@@ -191,6 +200,26 @@ function newPig() {
         stopGame();
     }
     
+}
+
+function checkHit() {
+    if (catchedPig) {
+        return;
+    }
+    if (elementsOverlap(carElem, pigElem)) {
+        pigElem.src = "img/smack.png";
+        hitCounter += 1;
+        hitCounterElem.innerText = hitCounter;
+        clearTimeout(pigTimer);
+        pigTimer = setTimeout(() => newPig(), pigDuration);
+        catchedPig = true;
+        if (hitCounter == 5) {
+            new Audio('sound/laugh.mp3').play();
+        } else {
+            new Audio('sound/punch.mp3').play();
+        }
+        
+    }
 }
 
 // Kontrollera om två element överlappar varandra
