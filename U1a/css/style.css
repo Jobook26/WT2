@@ -1,0 +1,38 @@
+@charset "UTF-8";
+/* ----- Stil för spelet ----- */
+
+#dice { /* Elementet som omger tärningarna */
+    margin: 30px 0;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+#dice img { /* Enskilda tärningar */
+    transition: transform ease-out 0.5s;
+    transform-origin: 45% 45%;
+    cursor: pointer;
+}
+.rotateDie { /* Används för att få tärningen att rotera */
+    transform: rotate(720deg); /* Snurra två varv */
+}
+
+ /* ----- Dialogen för inställningar ----- */
+#options {
+    background-color: #FED;
+    box-shadow: 0px 0px 15px 6px #999;
+    border-color: #333;
+}
+#options form {
+    display: grid;
+    grid-template-columns: max-content auto;
+	gap: 1em;
+}
+#options select {
+	width: max-content;
+}
+#options button {
+    display: block;
+    margin-left: auto;
+    padding: 0 1em;
+}

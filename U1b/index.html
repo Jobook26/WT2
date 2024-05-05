@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webbteknik 2 - Uppgift U1b</title>
+    <meta name="Author" content="Mitt namn">
+    <meta name="Description" content="JavaScript-exempel">
+    <meta name="Keywords" content="javascript, webbteknik">
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Webbteknik 2 — Uppgift U1b</h1>
+        <h2>Slumpval, arrayer, strängar, if-satser, loopar</h2>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="../U1a/index.html">U1a</a></li>
+            <li><a href="../U1b/index.html" class="thisPage">U1b</a></li>
+            <li><a href="../U2a/index.html">U2a</a></li>
+            <li><a href="../U2b/index.html">U2b</a></li>
+            <li><a href="../U3/index.html">U3</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Spelet Hänga gubbe</h2>
+        <p>Välkommen till spelet Hänga gubbe. Datorn väljer ett ord slumpmässigt och du gissar ordet genom att trycka på bokstavsknapparna.</p>
+		<p><button type="button" id="startBtn">Starta spelet</button></p>
+
+		<div id="board">
+
+			<div id="letterButtons">
+				<button type="button" value="A">A</button>
+				<button type="button" value="B">B</button>
+				<button type="button" value="C">C</button>
+				<button type="button" value="D">D</button>
+				<button type="button" value="E">E</button>
+				<button type="button" value="F">F</button>
+				<button type="button" value="G">G</button>
+				<button type="button" value="H">H</button>
+				<button type="button" value="I">I</button>
+				<button type="button" value="J">J</button>
+				<button type="button" value="K">K</button>
+				<button type="button" value="L">L</button>
+				<button type="button" value="M">M</button>
+				<button type="button" value="N">N</button>
+				<button type="button" value="O">O</button>
+				<button type="button" value="P">P</button>
+				<button type="button" value="Q">Q</button>
+				<button type="button" value="R">R</button>
+				<button type="button" value="S">S</button>
+				<button type="button" value="T">T</button>
+				<button type="button" value="U">U</button>
+				<button type="button" value="V">V</button>
+				<button type="button" value="W">W</button>
+				<button type="button" value="X">X</button>
+				<button type="button" value="Y">Y</button>
+				<button type="button" value="Z">Z</button>
+				<button type="button" value="Å">Å</button>
+				<button type="button" value="Ä">Ä</button>
+				<button type="button" value="Ö">Ö</button>
+			</div>
+
+			<div id="letterBoxes">
+				<!-- Här ska programmet lägga in ett span-element per bokstav -->
+				<!-- I CSS-koden stilsätts span-elementen, så att de ser ut som rutor -->
+			</div>
+
+			<!-- Bilden i denna img-tagg ska bytas ut, varje gång användaren väljer fel bokstav -->
+			<img id="hangman" src="img/empty.png" alt="Galge och gubbe">
+            
+		</div> <!-- End board -->
+
+		<div id="message"></div> <!-- Här skriver programmet meddelanden till användaren -->
+    </main>
+    <footer>
+        <p>Uppgift i Webbteknik 2 — <a href="https://wt2.enur.se" target="_blank">wt2.enur.se</a></p>
+    </footer>
+</body>
+
+</html>

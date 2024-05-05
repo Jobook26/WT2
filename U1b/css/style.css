@@ -1,0 +1,55 @@
+@charset "UTF-8";
+/* ----- Stil för spelet ----- */
+
+#board { /* Element som omger de olika delarna i spelet. */
+	border-top: 1px solid #666;
+	border-bottom: 1px solid #666;
+	padding: 10px 0 0 0;
+}
+
+#letterButtons {
+	width: 54em;
+	max-width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+    gap: 0.5em;
+}
+#letterButtons button { /* Knappar med bokstäver */
+	flex: 0 0 3em;
+	height: 2em;
+	font-size: 1.5em;
+}
+
+#letterBoxes {
+    padding-top: 1em;
+    display: flex;
+	flex-wrap: wrap;
+    gap: 0.4em;
+}
+#letterBoxes span { /* Rutor för bokstäverna i ordet */
+    /* span-elementen ska läggas in i HTML-koden med JS-kod. */
+    /* Ett span-element per bokstav i ordet. */
+	display: inline-block;
+	background-color: #FFF;
+	border: 1px solid #666;
+	width: 2em;
+	height: 2em;
+	font-size: 1.5em;
+    /* Flex inom rutan, för att kunna centrera texten både horisontellt och vertikalt */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#letterBoxes span.correctLetter {
+    /* Klassen correctLetter ska läggas in i elementet, då bokstaven läggs in. */
+    background-color: #FC6;
+}
+
+#hangman { /* img-taggen för galgen och gubben */
+	display: block;
+}
+
+#message { /* Element där meddelande skrivs i slutet av spelet */
+	margin-top: 1em;
+	font-size: 1.2em;
+}

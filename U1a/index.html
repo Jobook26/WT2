@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webbteknik 2 - Uppgift U1a</title>
+    <meta name="Author" content="Student">
+    <meta name="Description" content="JavaScript-exempel">
+    <meta name="Keywords" content="javascript, webbteknik">
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Webbteknik 2 — Uppgift U1a</h1>
+        <h2>Händelsehantering, funktioner, variabler, if-satser</h2>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="../U1a/index.html" class="thisPage">U1a</a></li>
+            <li><a href="../U1b/index.html">U1b</a></li>
+            <li><a href="../U2a/index.html">U2a</a></li>
+            <li><a href="../U2b/index.html">U2b</a></li>
+            <li><a href="../U3/index.html">U3</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Enkel variant av tärningsspelet 21</h2>
+        <button type="button" id="optionsBtn">Inställningar</button>
+        <p>Klicka på "Nytt spel", så kastas alla fem tärningarna. Sedan kan du kasta om en tärning i taget, genom att klicka på den. Du kan endast göra så många nya kast, som du valt i inställningarna. Klicka på "Stanna", om du vill avsluta innan du gjort alla omkast.</p>
+        <p>Summan 21 = 3 poäng, 20 = 2 poäng, 19 = 1 poäng. Övriga summor = 0 poäng.</p>
+        <button type="button" id="newBtn">Nytt spel</button>
+        <hr>
+        Antal omkast som återstår: <span id="rollCounter">0</span> — 
+        <button type="button" id="stopBtn">Stanna</button>
+        <div id="dice">
+            <img src="img/dice/1.png" alt="Tärning" id="die1">
+            <img src="img/dice/2.png" alt="Tärning" id="die2">
+            <img src="img/dice/3.png" alt="Tärning" id="die3">
+            <img src="img/dice/4.png" alt="Tärning" id="die4">
+            <img src="img/dice/5.png" alt="Tärning" id="die5">
+        </div>
+        <div id="result"></div>
+    </main>
+
+    <dialog id="options">
+        <form>
+            <label for="player">Ditt namn:</label><input type="text" id="player">
+            <label for="nrOfReroll">Max antal nya kast:</label>
+            <select id="nrOfReroll">
+                <option value="1">en</option>
+                <option value="2">två</option>
+                <option value="3" selected>tre</option>
+                <option value="4">fyra</option>
+                <option value="5">fem</option>
+            </select>
+        </form>
+        <button type="button" id="optionsOkBtn">OK</button>
+    </dialog>
+    
+    <footer>
+        <p>Uppgift i Webbteknik 2 — <a href="https://wt2.enur.se" target="_blank">wt2.enur.se</a></p>
+    </footer>
+</body>
+
+</html>

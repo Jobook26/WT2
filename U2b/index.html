@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webbteknik 2 - Uppgift U2b</title>
+    <meta name="Author" content="Mitt namn">
+    <meta name="Description" content="JavaScript-exempel">
+    <meta name="Keywords" content="javascript, webbteknik">
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Webbteknik 2 — Uppgift U2b</h1>
+        <h2>Koordinater, timer, animering, "krocktest"</h2>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="../U1a/index.html">U1a</a></li>
+            <li><a href="../U1b/index.html">U1b</a></li>
+            <li><a href="../U2a/index.html">U2a</a></li>
+            <li><a href="../U2b/index.html" class="thisPage">U2b</a></li>
+            <li><a href="../U3/index.html">U3</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Spelet Jaga vildsvin</h2>
+
+		<form>
+			<select id="carMenu">
+				<option>Välj bil ...</option>
+				<option>Ferrari Testarossa</option>
+				<option>Jeep Wrangler</option>
+				<option>VW Beetle</option>
+			</select>
+		</form>
+
+		<div id="board">
+			<img id="car" src="img/ferrari.png" alt="bil">
+			<img id="pig" src="img/pig.png" alt="gris">
+		</div>
+
+		<img class="alignRight" src="img/keys.png" alt="Tangenter för att styra bilen">
+		<div>
+			<button type="button" id="startBtn">Starta spelet</button>
+			<button type="button" id="stopBtn">Stoppa spelet</button>
+		</div>
+		<p>Vildsvin: <span id="pigCounter">0</span>
+			Antal träffar: <span id="hitCounter">0</span>
+		</p>
+    </main>
+    <footer>
+        <p>Uppgift i Webbteknik 2 — <a href="https://wt2.enur.se" target="_blank">wt2.enur.se</a></p>
+    </footer>
+</body>
+
+</html>

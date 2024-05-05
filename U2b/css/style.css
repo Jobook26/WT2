@@ -1,0 +1,38 @@
+@charset "UTF-8";
+/* ----- Stil för spelet ----- */
+
+#board { /* "Spelbrädet" */
+	background-color: #FC9;
+	color: #000;
+	width: 100%;
+	height: 500px;
+	margin: 10px 0;
+	position: relative;
+}
+
+#car { /* Storlek och position för bilen */
+	width: 90px;
+	height: auto;
+	position: absolute;
+	left: 10px;  /* left och top sätts av JS-kod */
+	top: 40px;
+	z-index: 1;
+    transition: transform 0.2s;
+}
+
+#pig { /* Storlek och position för vildsvinet */
+	/* Elementet används också för "smack"-bilden vid träff */
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	left: 0;  /* left och top sätts av JS-kod */
+	top: 0;
+	z-index: 2; /* Ovanför bilen, så att "smack"-bilden syns */
+	visibility: hidden; /* Elementet är från början dolt */
+}
+
+#pigCounter,
+#hitCounter { /* Storlek för räknarna */
+	margin-right: 2em;
+	font-size: 2em;
+}
