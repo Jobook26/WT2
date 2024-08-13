@@ -1,5 +1,7 @@
 /* Uppgift U3 */
 
+
+// variabler
 let startBtn;
 let newBricksBtn;
 let newBricks;
@@ -21,6 +23,7 @@ let ghostImg;
 
 let bricks=[]
 
+// Initiera globala variabler och händelsehanterare och addar event liseners. hämtar data från local starage
 function init() {
 
    
@@ -50,7 +53,6 @@ function init() {
     startBtn.addEventListener("click", startGame);
     newBricksBtn.addEventListener("click", newBrick);
 
-    
 
     newBricksBtn.disabled = true;
 
@@ -58,15 +60,10 @@ function init() {
     totalPointsBox.innerText = total.points;
     totalRoundsBox.innerText = total.rounds;
 
-
-    
-
-
-
-} // Slut init
+} 
 window.addEventListener("load", init);
 
-
+//nollställer föregående spel och startar ett spel 
 function startGame() {
     startBtn.disabled = true;
     bricksLeft = newBricks.children.length;
@@ -76,11 +73,6 @@ function startGame() {
     numbers.sort(() => Math.random() - 0.5);
     console.log(numbers)
 
-
-
-
-
-    
     for (let i = 0; i < board.children.length; i++) {
         if (!board.children[i].className.includes("mark")) {
             board.children[i].classList.remove("ghostTile");
@@ -91,26 +83,12 @@ function startGame() {
         }
     }
 
-
-
-
-
-
-
-
     newBrick()
 
     interval = setInterval(ghost, (Math.random() * 15 + 15) * 1000);
-
 }
 
-
-
-
-
-
-
-
+//skapar en ny bricka
 function newBrick() {
     newBricksBtn.disabled = true;
     
@@ -120,18 +98,11 @@ function newBrick() {
             brick.draggable = true;
             brick.addEventListener("dragstart", dragStart);
     }
-
-
-
-
-
-
-
 }
 
 
 
-
+// innehåller drag funtionalitet
 function dragStart(e) {
     console.log(this)
 
@@ -149,6 +120,7 @@ function dragStart(e) {
 
 
     }
+    //styr vad som händer när man släpper en bricka
     function dragEnd(e) {
         dragElem.removeEventListener("dragend", dragEnd);
         for (let i = 0; i < board.children.length; i++) {
@@ -159,11 +131,10 @@ function dragStart(e) {
                 board.children[i].removeEventListener("drop", dropZone);
             }
         }
-    } // Slut dragEnd
-
-
+    } 
+    //funtionaliteten för om en bricka släps över en dropzone på brädet
     function dropZone(e) {
-        e.preventDefault(); // Tillåt att elementet kan droppas
+        e.preventDefault(); 
         let dropElem = this;
         if (dropElem.innerText == "") {
             switch (e.type) {
@@ -207,17 +178,6 @@ function dragStart(e) {
             } 
         }
     } 
-
-
-
-
-
-
-
-
-
-
-
 }
 
 
@@ -226,7 +186,7 @@ function dragStart(e) {
 
 
 
-
+//avslutar spelet
 function endGame() {
     console.log("end")
 
@@ -241,7 +201,7 @@ function endGame() {
 
 
 
-
+//räknar ut poängen
 function score() {
     var points = 0;
     console.log("score")
@@ -281,7 +241,7 @@ function score() {
     localStorage.setItem("data", JSON.stringify(total))
 }
 
-
+//styr alla spökerna 
 function ghost() {
 
     ghostImg.style.visibility="visible";
@@ -320,6 +280,7 @@ function ghost() {
 
 }
 
+//tar bort spöken när de har gjort sin upgift
 function removeGhost(ghostTiles) {
     console.log("here")
     for (let i = 0; i < ghostTiles.length; i++) {

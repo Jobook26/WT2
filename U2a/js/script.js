@@ -70,6 +70,11 @@ function calculateCost() {
 // Kontrollera om familjerum är valt och ändra tillgänglighet till andra val
 function checkIfFamilyRoom() {
 	formElem.persons.disabled = !formElem.roomType[2].checked;
+	formElem.facility[2].disabled = formElem.roomType[2].checked;
+	if (formElem.roomType[2].checked) {
+		formElem.facility[2].checked = false;
+	}
+
 } // Slut checkIfFamilyRoom
 // --------------------------------------------------
 // Kontrollera innehållet i de fält som namnges i fieldNames
@@ -101,32 +106,7 @@ function checkField(e, field) {
 // --------------------------------------------------
 // Kontrollera kampanjkoden för varje tecken som skrivs i fältet
 function checkCampaign() {
-	var correct = true;
-	var roles = ["l", "l", "l", "-", "n", "n", "-", "l", "n"];
-	if (formElem.campaigncode.value.length == roles.length) {
-		i = 0
-		formElem.campaigncode.value.split("").forEach((letter) => {
-			if (roles[i] == "l") {
-				if (!/^[a-zA-Z]+$/.test(letter)) {
-					correct = false;
-				}
-			} else if (roles[i] == "n") {
-				if (isNaN(letter)) {
-					correct = false;
-				}
-			} else if (roles[i] == "-") {
-				if (letter != "-") {
-					correct = false;
-				}
-			}
-			i += 1;
-   		});
-	}
-	else{
-		correct = false;
-	}
-	console.log(correct);
-	if (correct) {
+	if (/^[a-zA-Z]{3}-\d{2}-[a-zA-Z]\d$/.test(formElem.campaigncode.value)) {
 		formElem.campaigncode.style.backgroundColor = "#6F9";
 	} else {
 		formElem.campaigncode.style.backgroundColor = "#F99";
