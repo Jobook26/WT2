@@ -2,41 +2,31 @@
 
 
 // variabler
-let startBtn;
-let newBricksBtn;
-let newBricks;
-let board;
-let numbers;
-let bricksLeft;
-let refilsLeft;
+let startBtn;       // button-element för startknappen
+let newBricksBtn;   // button-element för nya brickor
+let newBricks;      // div-element för nya brickor området
+let board;          // div-element för spel brädan
+let numbers;        // lista med brickor som kan dras
+let bricksLeft;     // int för antalet brickor som är kvar
 
-let message;
-let total = 0;
-let totalPointsBox;
-let totalRoundsBox;
+let message;        // div-element för medelanden
+let total = 0;      // info om alla spelade spel
+let totalPointsBox; // div-element för info om alla spelade spels poäng
+let totalRoundsBox; // div-element för info om antalet spelade spel
 
-let interval;
-let timer;
+let interval;       // seter intervalet för spöket
+let timer;          // seter hur länge spöket visas
 
-let ghostImg;
+let ghostImg;       // img-element för spök bilden
 
-
-let bricks=[]
-
-// Initiera globala variabler och händelsehanterare och addar event liseners. hämtar data från local starage
+// Initiera globala variabler och händelsehanterare och addar event liseners. Hämtar data från local starage.
 function init() {
-
-   
 
     total = JSON.parse(localStorage.getItem("data"))
     if (total == null) {
         total = {points:0, rounds:0};
     } 
     console.log(total);
-    
-
-    
-
     
     startBtn = document.getElementById("newGameBtn");
     newBricksBtn = document.getElementById("newTilesBtn");
@@ -53,16 +43,14 @@ function init() {
     startBtn.addEventListener("click", startGame);
     newBricksBtn.addEventListener("click", newBrick);
 
-
     newBricksBtn.disabled = true;
-
 
     totalPointsBox.innerText = total.points;
     totalRoundsBox.innerText = total.rounds;
 
 } 
 window.addEventListener("load", init);
-
+ 
 //nollställer föregående spel och startar ett spel 
 function startGame() {
     startBtn.disabled = true;
@@ -70,7 +58,15 @@ function startGame() {
     
 
     numbers = [...Array(40).keys()].map( i => i += 1)
-    numbers.sort(() => Math.random() - 0.5);
+
+
+    //numbers.sort(() => Math.random() - 0.5);
+
+    for (let i = 0; i < numbers.length; i++) {
+        let rI = Math.floor(Math.random() * i);
+        [numbers[i], numbers[rI]] = [numbers[rI], numbers[i]];
+    }
+
     console.log(numbers)
 
     for (let i = 0; i < board.children.length; i++) {
@@ -99,8 +95,6 @@ function newBrick() {
             brick.addEventListener("dragstart", dragStart);
     }
 }
-
-
 
 // innehåller drag funtionalitet
 function dragStart(e) {
@@ -132,7 +126,7 @@ function dragStart(e) {
             }
         }
     } 
-    //funtionaliteten för om en bricka släps över en dropzone på brädet
+    //funtionaliteten för om en bricka släpps över en dropzone på brädet
     function dropZone(e) {
         e.preventDefault(); 
         let dropElem = this;
@@ -160,15 +154,11 @@ function dragStart(e) {
                         }
                     }
 
-
                     console.log(fullSquares);
 
                     if (fullSquares >= 16) {
                         console.log("its 0")
                         endGame()
-
-
-
 
                     } else if (bricksLeft == 0) {
                         newBricksBtn.disabled = false;
@@ -180,18 +170,13 @@ function dragStart(e) {
     } 
 }
 
-
-
-
-
-
-
 //avslutar spelet
 function endGame() {
     console.log("end")
 
     clearInterval(interval);
     clearTimeout(timer);
+    ghostImg.style.visibility="hidden";
 
     startBtn.disabled = false;
 
@@ -205,31 +190,21 @@ function endGame() {
 function score() {
     var points = 0;
     console.log("score")
-    var squares = board.children;
-    for (let i = 0; i < 20; i += 5) {
-        var lstOld = [squares[i].innerText, squares[i + 1].innerText, squares[i + 2].innerText, squares[i + 3].innerText]
-        var lstNew = [squares[i].innerText, squares[i + 1].innerText, squares[i + 2].innerText, squares[i + 3].innerText]
-        lstNew.sort((a, b) => a - b);
-        if (JSON.stringify(lstOld) == JSON.stringify(lstNew)) {
-            squares[i + 4].classList.add("check")
-            points++
-        } else {
-            squares[i + 4].classList.add("cross")
-        }
-    }
-    for (let i = 0; i < 4; i += 1) {
-        var lstOld = [squares[i].innerText, squares[i + 5].innerText, squares[i + 10].innerText, squares[i + 15].innerText]
-        var lstNew = [squares[i].innerText, squares[i + 5].innerText, squares[i + 10].innerText, squares[i + 15].innerText]
-        lstNew.sort((a, b) => a - b);
-        if (JSON.stringify(lstOld) == JSON.stringify(lstNew)) {
-            squares[i + 20].classList.add("check")
-            points++
-        } else {
-            squares[i + 20].classList.add("cross")
-        }
-    }
-    message.innerText = "Du fick " + points + " poäng"
 
+    for (let i = 1; i < 9; i += 1) {
+        var lstOld = [board.getElementsByClassName("s" + i)[0].outerText, board.getElementsByClassName("s" + i)[1].outerText, board.getElementsByClassName("s" + i)[2].outerText, board.getElementsByClassName("s" + i)[3].outerText]
+        var lstNew = [board.getElementsByClassName("s" + i)[0].outerText, board.getElementsByClassName("s" + i)[1].outerText, board.getElementsByClassName("s" + i)[2].outerText, board.getElementsByClassName("s" + i)[3].outerText]
+
+        lstNew.sort((a, b) => a - b);
+        if (JSON.stringify(lstOld) == JSON.stringify(lstNew)) {
+            board.getElementsByClassName("s" + i)[4].classList.add("check")
+            points++
+        } else {
+            board.getElementsByClassName("s" + i)[4].classList.add("cross")
+        }
+    }
+
+    message.innerText = "Du fick " + points + " poäng"
 
     total.points += points;
     total.rounds++;
@@ -252,8 +227,6 @@ function ghost() {
             squares.push(i);
         }
     }
-
-
 
     console.log(squares);
 
@@ -280,7 +253,7 @@ function ghost() {
 
 }
 
-//tar bort spöken när de har gjort sin upgift
+//tar bort spöken när de har gjort sin uppgift
 function removeGhost(ghostTiles) {
     console.log("here")
     for (let i = 0; i < ghostTiles.length; i++) {
